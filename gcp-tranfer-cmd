@@ -11,14 +11,22 @@ source ~/.bashrc
 sudo reboot
 
 //-- Firewall rule
--- nodehost
-host-port: 5000,9100,9093,9087,80,443
+--name: host-port
+--network-tag: host
+--ip-range: 0.0.0.0/0
+--tcp-port: 5000,9100,9093,9087,80,443
 
--- noderelay
-relay-peer-port: 6000
+--name: relay-peer-port
+--network-tag: noderelay
+--ip-range: 0.0.0.0/0
+--tcp-port: 6000
 
--- nodecore
-core-peer-port : 3008
+--name: core-peer-port
+--network-tag: core
+--ip-range: [RELAY-IP-ADDRR-INTERNAL]
+--tcp-port: 3008
 
--- nodecore / noderelay / nodehost
-monitoring-port: 9091,12798
+--name: monitoring-port
+--network-tag: core / relay / host
+--ip-range: [HOST-IP-ADDRR-EXTERNAL],[127.0.0.1]
+--tcp-port: 9091,12798
