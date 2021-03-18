@@ -1,0 +1,24 @@
+//-- Change User
+sudo usermod -aG sudo user2
+sudo adduser user2 cnode
+sudo rsync -va /home/user1/ /home/user2
+sudo chown -R user2:sudo /opt/cardano
+sudo chown -R user2:sudo /home/user2/
+sudo deluser user1
+sudo deluser --remove-home user1
+echo export PATH=~/.cabal/bin:$PATH >> ~/.bashrc
+source ~/.bashrc
+sudo reboot
+
+//-- Firewall rule
+-- nodehost
+host-port: 5000,9100,9093,9087,80,443
+
+-- noderelay
+relay-peer-port: 6000
+
+-- nodecore
+core-peer-port : 3008
+
+-- nodecore / noderelay / nodehost
+monitoring-port: 9091,12798
