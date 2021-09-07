@@ -1,10 +1,11 @@
 groups:
-- name: Windows Server
+- name: serverStatsAlert
   rules:
-  - alert: Server Windows Down
+  - alert: ServerDown
     expr: up{job="windows_exporter"} == 0
     for: 1m
     labels:
       severity: "Critical"
     annotations:
-      Summary: 'Server "{{ $labels.instance }}" down.'
+      summary: 'Server "{{ $labels.instance }}" down.'
+      description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 60 seconds."
