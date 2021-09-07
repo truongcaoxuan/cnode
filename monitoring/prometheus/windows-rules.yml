@@ -1,3 +1,5 @@
+# windows_exporter released : https://github.com/prometheus-community/windows_exporter/releases
+# windows_exporter more detail : https://github.com/prometheus-community/windows_exporter
 groups:
 - name: serverStatsAlert
   rules:
