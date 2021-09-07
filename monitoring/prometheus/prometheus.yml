@@ -3,7 +3,7 @@ global:
   scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
   external_labels:
-        monitor: 'cnode-monitor'
+        monitor: 'node-monitor'
   # scrape_timeout is set to the global default (10s).
 
 scrape_configs:
@@ -14,7 +14,7 @@ scrape_configs:
         labels:
           alias: 'adapools'
           type:  'pool-stats'
-
+#---------------------------------------------------------------------
   - job_name: 'cnode' # To scrape data from the running cardano-node
     scrape_interval: 15s
     static_configs:
@@ -34,6 +34,7 @@ scrape_configs:
         labels:
           alias: 'core-vitra'
           type:  'pool'
+#---------------------------------------------------------------------
   - job_name: 'node-exporter' # To scrape data from a node exporter to monitor the linux host metrics.
     scrape_interval: 15s
     static_configs:
@@ -53,15 +54,34 @@ scrape_configs:
         labels:
           alias: 'core-vitra'
           type:  'system'
+#---------------------------------------------------------------------
+  - job_name: 'windows_exporter' # To scrape data from a windhows exporter to monitor the host metrics.
+    metrics_path: /metrics
+    scrape_interval: 15s
+    static_configs:
+      - targets: ['hostname-winserver1:9182']
+        labels:
+          alias: 'vps1'
+          type:  'system'
+      - targets: ['hostname-winserver2:9182']
+        labels:
+          alias: 'vps2'
+          type:  'system'
+      - targets: ['hostname-winserver3:9182']
+        labels:
+          alias: 'vps3'
+          type:  'system'
+#---------------------------------------------------------------------
 # Alertmanager configuration
 alerting:
    alertmanagers:
    - static_configs:
       - targets:
          - 127.0.0.1:9093
-
+#---------------------------------------------------------------------
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'
 rule_files:
      #- "global-rules.yml"
      #- "vmware-rules.yml"
      - "system-rules.yml"
+     - "windows-rules.yml"
