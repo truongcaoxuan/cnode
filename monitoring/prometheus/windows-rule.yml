@@ -1,0 +1,10 @@
+groups:
+- name: Windows Server
+  rules:
+  - alert: Server Windows Down
+    expr: up{job="windows_exporter"} == 0
+    for: 1m
+    labels:
+      severity: "Critical"
+    annotations:
+      Summary: 'Server "{{ $labels.instance }}" down.'
