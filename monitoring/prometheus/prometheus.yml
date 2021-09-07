@@ -6,6 +6,9 @@ global:
         monitor: 'node-monitor'
   # scrape_timeout is set to the global default (10s).
 
+#---------------------------------------------------------------------
+# https://adapools.org/
+# Crape data from adapools
 scrape_configs:
   - job_name: 'poolstats' # To crape data form text collector source import adapools
     scrape_interval: 15s
@@ -15,6 +18,8 @@ scrape_configs:
           alias: 'adapools'
           type:  'pool-stats'
 #---------------------------------------------------------------------
+# https://github.com/input-output-hk/cardano-node/releases
+# Cnode configuration
   - job_name: 'cnode' # To scrape data from the running cardano-node
     scrape_interval: 15s
     static_configs:
@@ -35,6 +40,8 @@ scrape_configs:
           alias: 'core-vitra'
           type:  'pool'
 #---------------------------------------------------------------------
+# https://github.com/prometheus/node_exporter/releases
+# Node exporter configuration
   - job_name: 'node-exporter' # To scrape data from a node exporter to monitor the linux host metrics.
     scrape_interval: 15s
     static_configs:
@@ -55,6 +62,8 @@ scrape_configs:
           alias: 'core-vitra'
           type:  'system'
 #---------------------------------------------------------------------
+# https://github.com/prometheus-community/windows_exporter/releases
+# Windows exporter configuration
   - job_name: 'windows_exporter' # To scrape data from a windhows exporter to monitor the host metrics.
     metrics_path: /metrics
     scrape_interval: 15s
@@ -72,6 +81,7 @@ scrape_configs:
           alias: 'vps3'
           type:  'system'
 #---------------------------------------------------------------------
+# https://github.com/prometheus/alertmanager/releases/
 # Alertmanager configuration
 alerting:
    alertmanagers:
