@@ -7,7 +7,7 @@ global:
   # scrape_timeout is set to the global default (10s).
 
 #---------------------------------------------------------------------
-# https://adapools.org/
+# https://crypto2099.io/adding-pool-stats-to-grafana-dashboard/
 # Crape data from adapools
 scrape_configs:
   - job_name: 'poolstats' # To crape data form text collector source import adapools
