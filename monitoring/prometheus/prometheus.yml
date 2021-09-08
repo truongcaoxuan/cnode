@@ -64,7 +64,7 @@ scrape_configs:
 #---------------------------------------------------------------------
 # https://github.com/prometheus-community/windows_exporter/releases
 # Windows exporter configuration
-  - job_name: 'windows_exporter' # To scrape data from a windhows exporter to monitor the host metrics.
+  - job_name: 'windows-exporter' # To scrape data from a windhows exporter to monitor the host metrics.
     metrics_path: /metrics
     scrape_interval: 15s
     static_configs:
