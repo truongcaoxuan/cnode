@@ -1,7 +1,7 @@
 telegram_token: "Bot-Token"
 
 # ONLY IF YOU USING TEMPLATE required for test
-template_path: "/etc/telegrambot/default.tmpl"
+template_path: "/etc/telegrambot/template_scada.tmpl"
 time_zone: "Asia/Ho_Chi_Minh"
 split_token: "|"
 
