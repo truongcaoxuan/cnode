@@ -4,7 +4,7 @@ groups:
 - name: serverStatsAlert
   rules:
   - alert: ServerDown
-    expr: up{job="windows_exporter"} == 0
+    expr: up{job="windows-exporter"} == 0
     for: 1m
     labels:
       severity: "Critical"
