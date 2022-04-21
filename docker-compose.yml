@@ -66,11 +66,11 @@ services:
     container_name: telegrambot
     restart: always
     volumes:
-      - /opt/cnode/monitoring/prometheus_bot:/telegrambot
+      - /opt/cnode/monitoring/prometheus_bot:/etc/telegrambot
     command:
-      - '-c /telegrambot/config.yaml'
+      - '-c /etc/telegrambot/config.yaml'
       - '-l ":9087" '
-      - '-t /telegrambot/template_scada.tmpl'
+      - '-t /etc/telegrambot/template_scada.tmpl'
     ports:
       - 9087:9087
     networks:
