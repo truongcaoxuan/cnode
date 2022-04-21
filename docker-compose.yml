@@ -133,6 +133,8 @@ services:
       - prometheus
     container_name: grafana
     restart: always
+    command:
+      - '-e "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource"'
     volumes:
       - grafana_data:/var/lib/grafana
       - /opt/cnode/monitoring/grafana/dashboards:/var/lib/grafana/dashboards
