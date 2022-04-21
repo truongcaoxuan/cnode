@@ -138,7 +138,7 @@ services:
     volumes:
       - grafana_data:/var/lib/grafana
       - /opt/cnode/monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
-      - /opt/cnode/monitoring/grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yaml
+      - /opt/cnode/monitoring/grafana/provisioning:/etc/grafana/provisioning
       - /opt/cnode/monitoring/grafana/dashboards:/var/lib/grafana/dashboards
     ports:
       - 5000:3000
