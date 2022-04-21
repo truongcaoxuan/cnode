@@ -16,11 +16,7 @@ services:
     container_name: cnode
     restart: always
     volumes:
-      - /opt/cnode/db:/opt/cardano/data
-      - /opt/cnode/ipc:/opt/cardano/ipc
-      - /opt/cnode/config:/opt/cardano/config
-      - /opt/cnode/scripts:/opt/cardano/scripts
-      - /opt/cnode/priv:/opt/cardano/priv
+      - /opt/cnode:/opt/cardano
     command:
       - '-e NETWORK=mainnet'
     entrypoint: /opt/cardano/scripts/cnode.sh
