@@ -13,7 +13,7 @@ scrape_configs:
   - job_name: 'poolstats' # To crape data form text collector source import adapools
     scrape_interval: 15s
     static_configs:
-      - targets: ['127.0.0.1:9100']
+      - targets: ['localhost:9100']
         labels:
           alias: 'adapools'
           type:  'pool-stats'
@@ -23,7 +23,7 @@ scrape_configs:
   - job_name: 'cnode' # To scrape data from the running cardano-node
     scrape_interval: 15s
     static_configs:
-      - targets: ['127.0.0.1:12798']
+      - targets: ['localhost:12798']
         labels:
           alias: 'localhost'
           type:  'pool'
@@ -41,6 +41,10 @@ scrape_configs:
 # Node exporter configuration
   - job_name: 'node-exporter' # To scrape data from a node exporter to monitor the linux host metrics.
     scrape_interval: 15s
+    scrape_timeout: 10s
+    honor_timestamps: true
+    metrics_path: /metrics
+    scheme: http
     static_configs:
       - targets: ['node-exporter:9091']
         labels:
@@ -59,8 +63,9 @@ scrape_configs:
 # https://github.com/prometheus-community/windows_exporter/releases
 # Windows exporter configuration
   - job_name: 'windows-exporter' # To scrape data from a windhows exporter to monitor the host metrics.
-    metrics_path: /metrics
     scrape_interval: 15s
+    metrics_path: /metrics
+    
     static_configs:
       - targets: ['hostname-winserver1:9182']
         labels:
@@ -81,7 +86,7 @@ alerting:
    alertmanagers:
    - static_configs:
       - targets:
-         - 127.0.0.1:9093
+         - localhost:9093
 #---------------------------------------------------------------------
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'
 rule_files:
