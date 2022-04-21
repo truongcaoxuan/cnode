@@ -144,5 +144,7 @@ services:
       - 5000:3000
     links:
       - prometheus
+    env_file:
+      - monitoring.conf
     networks:
       - monitoring
