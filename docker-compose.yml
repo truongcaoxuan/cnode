@@ -3,10 +3,32 @@ version: '3.3'
 networks:
   monitoring:
     driver: bridge
+  cnode:
+    driver: bridge
     
 volumes:
   prometheus_data: {}
 
+services:
+  cardano-node:
+    image: inputoutput/cardano-node:latest
+    container_name: cnode
+    restart: always
+    volumes:
+      - /opt/cnode/db:/opt/cardano/data
+      - /opt/cnode/ipc:/opt/cardano/ipc
+      - /opt/cnode/config:/opt/cardano/config
+      - /opt/cnode/scripts:/opt/cardano/scripts
+      - /opt/cnode/priv:/opt/cardano/priv
+    command:
+      - '-e NETWORK=mainnet'
+    entrypoint: /opt/cardano/scripts/cnode.sh
+    ports:
+      - 6000:3001
+      - 12798:12798
+    networks:
+      - cnode
+      
 services:
   node-exporter:
     image: prom/node-exporter:latest
