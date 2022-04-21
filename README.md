@@ -1,5 +1,8 @@
 ## Install docker
 ```
+sudo apt update -y
+sudo apt upgrade -y
+
 sudo apt install -y docker.io
 sudo groupadd docker
 sudo usermod -aG docker `whoami`
@@ -7,7 +10,7 @@ sudo usermod -aG docker `whoami`
 
 ## Build telegrambot images
 ```
-sudo apt  install -y golang-go
+sudo apt install -y golang-go
 go get github.com/inCaller/prometheus_bot
 
 git clone https://github.com/inCaller/prometheus_bot.git
@@ -25,7 +28,7 @@ sudo apt install -y docker-compose
 docker-compose up -d
 ```
 
-## Other docker compose command
+### Other docker compose command
 ```
 docker-compose down
 docker rm -f $(docker ps -a -q)
