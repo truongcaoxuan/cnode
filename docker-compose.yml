@@ -84,12 +84,12 @@ services:
     container_name: alertmanager
     restart: always
     volumes:
-      - alertmanager_data:/alertmanager/data
+      - alertmanager_data:/data/
       - /opt/cardano/monitoring/alertmanager/:/etc/alertmanager/
     restart: always
     command:
-      - '-config.file=/etc/alertmanager/config.yml'
-      - '-storage.path=/alertmanager/data'
+      - '--config.file=/etc/alertmanager/alermanager.yml'
+      - '--storage.path=/data'
     ports:
       - 9093:9093
  #   links:
