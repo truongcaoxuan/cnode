@@ -137,6 +137,6 @@ services:
     links:
       - prometheus
     env_file:
-      - monitoring.conf
+      - /opt/cardano/monitoring/grafana/grafana-variables.env
     networks:
       - monitoring
