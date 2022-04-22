@@ -11,7 +11,7 @@ route:
 receivers:
 - name: 'web.hook'
   webhook_configs:
-  - url: 'telegrambot:9087/alert/-123456789'
+  - url: 'http://127.0.0.1:9087/alert/-123456789'
 
 inhibit_rules:
   - source_match:
