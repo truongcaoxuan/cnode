@@ -26,6 +26,8 @@ sudo apt install -y docker-compose
 ## Run docker compose up
 ```
 docker-compose up -d
+docker-compose --env-file .env.core up -d
+docker-compose --env-file .env.relay up -d
 ```
 
 ### Other docker compose command
