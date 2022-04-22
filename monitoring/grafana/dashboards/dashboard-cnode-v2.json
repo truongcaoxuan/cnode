@@ -1107,7 +1107,7 @@
         "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
-            "sum"
+            "lastNotNull"
           ],
           "fields": "",
           "values": false
@@ -1304,7 +1304,6 @@
               "type": "special"
             }
           ],
-          "max": 30000,
           "min": 1,
           "thresholds": {
             "mode": "absolute",
@@ -1333,7 +1332,7 @@
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
-            "sum"
+            "lastNotNull"
           ],
           "fields": "",
           "values": false
@@ -4233,6 +4232,6 @@
   "timezone": "",
   "title": "Cardano node monitoring by metrics2",
   "uid": "Oe0reiHef5",
-  "version": 2,
+  "version": 4,
   "weekStart": ""
 }
