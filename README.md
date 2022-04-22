@@ -24,13 +24,18 @@ sudo apt install -y docker-compose
 ```
 
 ## Run docker compose up
+Use .env config
 ```
 docker-compose config
 docker-compose up -d
-
+```
+Use .env.core config
+```
 docker-compose --env-file .env.core config
 docker-compose --env-file .env.core up -d
-
+```
+Use .env.relay config
+```
 docker-compose --env-file .env.relay config
 docker-compose --env-file .env.relay up -d
 ```
