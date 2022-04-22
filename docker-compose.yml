@@ -18,7 +18,7 @@ services:
     container_name: cnode
     restart: always
     volumes:
-      - /opt/cnode:/opt/cardano
+      - /opt/cardano/cnode:/opt/cardano
     command:
       - '-e NETWORK=mainnet'
     entrypoint: /opt/cardano/scripts/cnode.sh
@@ -67,7 +67,7 @@ services:
 #    container_name: telegrambot
 #    restart: always
 #    volumes:
-#      - /opt/cnode/monitoring/prometheus_bot:/etc/telegrambot
+#      - /opt/cardano/monitoring/prometheus_bot:/etc/telegrambot
 #    command:
 #      - '-c /etc/telegrambot/config.yaml'
 #      - '-l ":9087" '
@@ -85,7 +85,7 @@ services:
     restart: always
     volumes:
       - alertmanager_data:/alertmanager/data
-      - /opt/cnode/monitoring/alertmanager/:/etc/alertmanager/
+      - /opt/cardano/monitoring/alertmanager/:/etc/alertmanager/
     restart: always
     command:
       - '-config.file=/etc/alertmanager/config.yml'
@@ -109,7 +109,7 @@ services:
     container_name: prometheus
     restart: always
     volumes:
-      - /opt/cnode/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /opt/cardano/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -137,9 +137,9 @@ services:
 #      - '-e "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource"'
     volumes:
       - grafana_data:/var/lib/grafana
-      - /opt/cnode/monitoring/grafana/dashboards:/var/lib/grafana/dashboards
-      - /opt/cnode/monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
-      - /opt/cnode/monitoring/grafana/provisioning:/etc/grafana/provisioning
+      - /opt/cardano/monitoring/grafana/dashboards:/var/lib/grafana/dashboards
+      - /opt/cardano/monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - /opt/cardano/monitoring/grafana/provisioning:/etc/grafana/provisioning
     ports:
       - 5000:3000
     links:
