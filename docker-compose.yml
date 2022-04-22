@@ -84,7 +84,7 @@ services:
       - /opt/cardano/monitoring/alertmanager/:/config/
     restart: always
     command:
-      - '--config.file=/config/alermamager.yml'
+      - '--config.file=/config/alertmanager.yml'
       - '--storage.path=/data'
     ports:
       - 9093:9093
