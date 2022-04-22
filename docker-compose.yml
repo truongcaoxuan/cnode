@@ -12,6 +12,7 @@ volumes:
   alertmanager_data: {}
 
 services:
+
   cardano-node:
     image: inputoutput/cardano-node:latest
     container_name: cnode
@@ -61,25 +62,25 @@ services:
     deploy:
       mode: global
 
-  telegrambot:
-    image: vnpip/telegrambot:latest
-    container_name: telegrambot
-    restart: always
-    volumes:
-      - /opt/cnode/monitoring/prometheus_bot:/etc/telegrambot
-    command:
-      - '-c /etc/telegrambot/config.yaml'
-      - '-l ":9087" '
-      - '-t /etc/telegrambot/template_scada.tmpl'
-    ports:
-      - 9087:9087
-    networks:
-      - monitoring
+#  telegrambot:
+#    image: vnpip/telegrambot:latest
+#    container_name: telegrambot
+#    restart: always
+#    volumes:
+#      - /opt/cnode/monitoring/prometheus_bot:/etc/telegrambot
+#    command:
+#      - '-c /etc/telegrambot/config.yaml'
+#      - '-l ":9087" '
+#      - '-t /etc/telegrambot/template_scada.tmpl'
+#    ports:
+#      - 9087:9087
+#    networks:
+#      - monitoring
       
   alertmanager:
     image: prom/alertmanager:latest
-    depends_on:
-      - telegrambot
+#    depends_on:
+#      - telegrambot
     container_name: alertmanager
     restart: always
     volumes:
@@ -91,8 +92,8 @@ services:
       - '-storage.path=/alertmanager/data'
     ports:
       - 9093:9093
-    links:
-      - telegrambot
+ #   links:
+ #     - telegrambot
     networks:
       - monitoring
     deploy:
@@ -103,7 +104,6 @@ services:
     depends_on:
       - cardano-node
       - node-exporter
-      - telegrambot
       - alertmanager
       - cadvisor
     container_name: prometheus
@@ -120,8 +120,8 @@ services:
     ports:
       - 9090:9090
     links:
-      - cadvisor:cadvisor
-      - alertmanager:alertmanager
+      - cadvisor
+      - alertmanager
     networks:
       - monitoring
     deploy:
