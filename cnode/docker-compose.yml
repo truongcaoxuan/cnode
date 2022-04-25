@@ -20,10 +20,12 @@ services:
       - /opt/cardano/cnode/priv/:/opt/cardano/priv/
     command:
       - '-e NETWORK=${CNODE_NETWORK}'
-    entrypoint: /opt/cardano/scripts/cnode.sh
     ports:
       - ${CNODE_PORT}:3001
       - ${CNODE_METRICS_PORT}:12798
+    env_file:
+      - /opt/cardano/cnode/cnode-variables.env
+    entrypoint: /opt/cardano/scripts/cnode.sh
     networks:
       - cnode
       
