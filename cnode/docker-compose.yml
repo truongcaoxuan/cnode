@@ -19,11 +19,11 @@ services:
       - /opt/cardano/cnode/scripts/:/opt/cardano/scripts/
       - /opt/cardano/cnode/priv/:/opt/cardano/priv/
     command:
-      - '-e NETWORK=mainnet'
+      - '-e NETWORK=${CNODE_NETWORK}'
     entrypoint: /opt/cardano/scripts/cnode.sh
     ports:
-      - 6000:3001
-      - 12798:12798
+      - ${CNODE_PORT}:3001
+      - ${CNODE_METRICS_PORT}:12798
     networks:
       - cnode
       
