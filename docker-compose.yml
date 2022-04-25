@@ -3,8 +3,6 @@ version: '3.3'
 networks:
   monitoring:
     driver: bridge
-  cnode:
-    driver: bridge
     
 volumes:
   prometheus_data: {}
