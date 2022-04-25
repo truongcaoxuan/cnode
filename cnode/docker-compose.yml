@@ -9,8 +9,8 @@ networks:
 services:
 
   cardano-node:
-    image: inputoutput/cardano-node:latest
-    container_name: cnode
+    image: inputoutput/cardano-node:${CNODE_VERSION}
+    container_name: ${CNODE_CONTAINER_NAME}
     restart: always
     volumes:
       - /opt/cardano/cnode/db/:/opt/cardano/data/
