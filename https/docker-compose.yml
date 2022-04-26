@@ -10,7 +10,7 @@ services:
       - 443:443
     restart: always
     volumes:
-      - /opt/cardano/https/nginx/web.conf/:/etc/nginx/conf.d/:ro
+      - /opt/cardano/https/nginx/conf/:/etc/nginx/conf.d/:ro
       - /opt/cardano/certbot/www:/var/www/certbot/:ro
       - /opt/cardano/certbot/conf/:/etc/nginx/ssl/:ro
   certbot:
