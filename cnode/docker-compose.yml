@@ -25,7 +25,7 @@ services:
       - ${CNODE_METRICS_PORT}:12798
     env_file:
       - /opt/cardano/cnode/cnode-variables.env
-    entrypoint: /opt/cardano/scripts/cnode.sh
+    entrypoint: /opt/cardano/scripts/run-node
     networks:
       - cnode
       
