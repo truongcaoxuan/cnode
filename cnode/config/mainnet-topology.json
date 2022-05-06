@@ -106,8 +106,8 @@
       "valency": 1
     },
     {
-      "addr": "core-trada.vnpip.com",
-      "port": 3008,
+      "addr": "relay.vnpip.com",
+      "port": 6000,
       "valency": 1
     },
     {
