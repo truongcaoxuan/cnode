@@ -25,7 +25,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 3,
   "links": [
     {
       "icon": "bolt",
@@ -119,7 +118,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -195,7 +194,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -214,7 +213,8 @@
     },
     {
       "datasource": {
-        "uid": "prometheus"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "get from adapools",
       "fieldConfig": {
@@ -237,7 +237,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 6,
         "w": 8,
         "x": 8,
         "y": 0
@@ -258,41 +258,65 @@
         "text": {},
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "expr": "tradapool_active_stake/1000000",
-          "instant": true,
-          "interval": "",
           "legendFormat": "Active Stake",
+          "range": true,
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "expr": "tradapool_total_stake/1000000",
-          "instant": true,
-          "interval": "",
+          "hide": false,
           "legendFormat": "Live Stake",
+          "range": true,
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "expr": "tradapool_pledged/1000000",
-          "instant": true,
-          "interval": "",
+          "hide": false,
           "legendFormat": "Pledged (ADA)",
+          "range": true,
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "expr": "tradapool_rank",
-          "instant": true,
-          "interval": "",
+          "hide": false,
           "legendFormat": "AdaPools.org Rank",
+          "range": true,
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "expr": "tradapool_delegators",
-          "instant": true,
-          "interval": "",
+          "hide": false,
           "legendFormat": "Delegators",
+          "range": true,
           "refId": "E"
         }
       ],
@@ -301,7 +325,8 @@
     },
     {
       "datasource": {
-        "uid": "prometheus"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "get from adapools",
       "fieldConfig": {
@@ -345,12 +370,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "expr": "tradapool_blocks_epoch",
-          "interval": "",
           "legendFormat": "TRADA",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -359,7 +389,8 @@
     },
     {
       "datasource": {
-        "uid": "prometheus"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "get from adapools",
       "fieldConfig": {
@@ -403,12 +434,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "expr": "tradapool_blocks_lifetime",
-          "interval": "",
           "legendFormat": "TRADA",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -417,94 +453,8 @@
     },
     {
       "datasource": {
-        "uid": "prometheus"
-      },
-      "description": "get from adapools",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "continuous-GrYlRd"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "rgb(39, 89, 16)",
-                "value": null
-              }
-            ]
-          },
-          "unit": "locale"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 8,
-        "x": 8,
-        "y": 3
-      },
-      "id": 101,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "vertical",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "value_and_name"
-      },
-      "pluginVersion": "8.5.0",
-      "targets": [
-        {
-          "expr": "vitrapool_active_stake/1000000",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "Active Stake",
-          "refId": "A"
-        },
-        {
-          "expr": "vitrapool_total_stake/1000000",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "Live Stake",
-          "refId": "B"
-        },
-        {
-          "expr": "vitrapool_pledged/1000000",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "Pledged (ADA)",
-          "refId": "C"
-        },
-        {
-          "expr": "vitrapool_rank",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "AdaPools.org Rank",
-          "refId": "D"
-        },
-        {
-          "expr": "vitrapool_delegators",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "Delegators",
-          "refId": "E"
-        }
-      ],
-      "title": "VITRA POOL STATS",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "uid": "prometheus"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "get from adapools",
       "fieldConfig": {
@@ -548,12 +498,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "expr": "tradapool_blocks_estimated",
-          "interval": "",
           "legendFormat": "TRADA",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -562,7 +517,8 @@
     },
     {
       "datasource": {
-        "uid": "prometheus"
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "get from adapools",
       "fieldConfig": {
@@ -606,12 +562,17 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
           "expr": "tradapool_saturated",
-          "interval": "",
           "legendFormat": "TRADA",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -760,7 +721,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -834,7 +795,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -898,7 +859,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -960,7 +921,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1042,7 +1003,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1115,7 +1076,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1188,7 +1149,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1265,7 +1226,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1340,7 +1301,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1410,7 +1371,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1494,7 +1455,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1565,7 +1526,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1636,7 +1597,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1720,7 +1681,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1791,7 +1752,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1862,7 +1823,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -1933,7 +1894,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "datasource": {
@@ -2063,7 +2024,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -2143,7 +2104,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2242,7 +2203,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2315,8 +2276,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               },
               {
                 "color": "orange",
@@ -4232,6 +4192,6 @@
   "timezone": "",
   "title": "Cardano node monitoring by metrics2",
   "uid": "Oe0reiHef5",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }
