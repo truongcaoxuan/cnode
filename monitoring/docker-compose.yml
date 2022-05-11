@@ -44,6 +44,7 @@ services:
       - 8080:8080
 
   telegrambot:
+    build: /opt/cardano/monitoring/prometheus_bot/
     image: prometheus-bot:latest
     container_name: telegrambot
     restart: always
