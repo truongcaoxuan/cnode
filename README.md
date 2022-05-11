@@ -8,24 +8,25 @@ sudo groupadd docker
 sudo usermod -aG docker `whoami`
 ```
 
-## Build telegrambot images
-```
-sudo apt install -y golang-go
-go get github.com/inCaller/prometheus_bot
-
-git clone https://github.com/inCaller/prometheus_bot.git
-cd prometheus_bot
-docker build --force-rm -t vnpip/telegrambot .
-```
-
 ## Install docker-compose
 ```
 sudo apt install -y docker-compose
 ```
 
-## Run docker compose up
+## Git clone
+```
+mkdir /opt/cardano/
+cd /opt/cardano/
+git clone https://github.com/truongcaoxuan/cnode-docker-compose.git
+cd cnode-docker-compose
+git clone https://github.com/inCaller/prometheus_bot.git
+
+```
+
+## Run docker compose up monitoring
 Use .env config
 ```
+cd /opt/cardano/cnode-docker-compose
 docker-compose config
 docker-compose up -d
 ```
