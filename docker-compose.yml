@@ -18,7 +18,7 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-      - /opt/cardano/monitoring/exporters/poolstats/:/pool/
+      - /opt/cardano/cnode-docker-compose/exporters/poolstats/:/pool/
     command:
       - '--path.procfs=/host/proc'
       - '--path.rootfs=/rootfs'
@@ -44,12 +44,12 @@ services:
       - 8080:8080
 
   telegrambot:
-    build: /opt/cardano/monitoring/prometheus_bot/
+    build: /opt/cardano/cnode-docker-compose/prometheus_bot/
     image: prometheus-bot:latest
     container_name: telegrambot
     restart: always
     volumes:
-      - /opt/cardano/monitoring/telegrambot/:/etc/telegrambot/
+      - /opt/cardano/cnode-docker-compose/telegrambot/:/etc/telegrambot/
     ports:
       - 9087:9087
     networks:
@@ -63,7 +63,7 @@ services:
     restart: always
     volumes:
       - alertmanager_data:/data/
-      - /opt/cardano/monitoring/alertmanager/:/config/
+      - /opt/cardano/cnode-docker-compose/alertmanager/:/config/
     restart: always
     command:
       - '--config.file=/config/alertmanager.yml'
@@ -84,7 +84,7 @@ services:
     container_name: prometheus
     restart: always
     volumes:
-      - /opt/cardano/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /opt/cardano/cnode-docker-compose/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -110,9 +110,9 @@ services:
 #      - '-e "GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource"'
     volumes:
       - grafana_data:/var/lib/grafana
-      - /opt/cardano/monitoring/grafana/dashboards:/var/lib/grafana/dashboards
-      - /opt/cardano/monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
-      - /opt/cardano/monitoring/grafana/provisioning:/etc/grafana/provisioning
+      - /opt/cardano/cnode-docker-compose/grafana/dashboards:/var/lib/grafana/dashboards
+      - /opt/cardano/cnode-docker-compose/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - /opt/cardano/cnode-docker-compose/grafana/provisioning:/etc/grafana/provisioning
     ports:
       - 5000:3000
     links:
