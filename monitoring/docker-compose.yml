@@ -49,7 +49,7 @@ services:
     container_name: telegrambot
     restart: always
     volumes:
-      - /opt/cardano/monitoring/prometheus_bot/:/etc/telegrambot/
+      - /opt/cardano/monitoring/telegrambot/:/etc/telegrambot/
     ports:
       - 9087:9087
     networks:
