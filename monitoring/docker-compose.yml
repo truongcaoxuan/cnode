@@ -18,7 +18,7 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
-      - /opt/cardano/monitoring/exporters/pool-stats/:/pool/
+      - /opt/cardano/monitoring/exporters/poolstats/:/pool/
     command:
       - '--path.procfs=/host/proc'
       - '--path.rootfs=/rootfs'
