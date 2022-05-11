@@ -62,12 +62,12 @@ services:
     container_name: alertmanager
     restart: always
     volumes:
-      - alertmanager_data:/data/
+      - alertmanager_data:/home/data/
       - /opt/cardano/cnode-docker-compose/alertmanager/:/config/
     restart: always
     command:
       - '--config.file=/config/alertmanager.yml'
-      - '--storage.path=/data'
+      - '--storage.path=/home/data/'
     ports:
       - 9093:9093
     links:
