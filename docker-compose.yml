@@ -118,6 +118,6 @@ services:
     links:
       - prometheus
     env_file:
-      - /opt/cardano/monitoring/grafana/grafana-variables.env
+      - /opt/cardano/cnode-docker-compose/grafana/grafana-variables.env
     networks:
       - monitoring
