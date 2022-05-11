@@ -43,25 +43,21 @@ services:
     ports:
       - 8080:8080
 
-#  telegrambot:
-#    image: vnpip/telegrambot:latest
-#    container_name: telegrambot
-#    restart: always
-#    volumes:
-#      - /opt/cardano/monitoring/prometheus_bot:/etc/telegrambot
-#    command:
-#      - '-c /etc/telegrambot/config.yaml'
-#      - '-l ":9087" '
-#      - '-t /etc/telegrambot/template_scada.tmpl'
-#    ports:
-#      - 9087:9087
-#    networks:
-#      - monitoring
+  telegrambot:
+    image: prometheus-bot:latest
+    container_name: telegrambot
+    restart: always
+    volumes:
+      - /opt/cardano/monitoring/prometheus_bot/:/etc/telegrambot/
+    ports:
+      - 9087:9087
+    networks:
+      - monitoring
       
   alertmanager:
     image: prom/alertmanager:latest
-#    depends_on:
-#      - telegrambot
+    depends_on:
+      - telegrambot
     container_name: alertmanager
     restart: always
     volumes:
@@ -73,8 +69,8 @@ services:
       - '--storage.path=/data'
     ports:
       - 9093:9093
- #   links:
- #     - telegrambot
+    links:
+      - telegrambot
     networks:
       - monitoring
       
