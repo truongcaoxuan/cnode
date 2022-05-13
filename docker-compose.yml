@@ -9,7 +9,10 @@ volumes:
   grafana_data: {}
   alertmanager_data: {}
 
-services:   
+services:
+#-------------------------------------
+# Node Exporter
+#-------------------------------------
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
@@ -30,7 +33,9 @@ services:
       - 9091:9100
     networks:
       - monitoring
-
+#-------------------------------------
+# cAdvisor
+#-------------------------------------
   cadvisor:
     image: google/cadvisor
     container_name: cadvisor
@@ -42,7 +47,9 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
     ports:
       - 8080:8080
-
+#-------------------------------------
+# ALERT MANAGER / TELEGRAMBOT
+#-------------------------------------
   telegrambot:
     build: /opt/cardano/cnode-docker-compose/prometheus_bot/
     image: prometheus-bot:latest
@@ -72,7 +79,9 @@ services:
       - 9093:9093
     networks:
       - monitoring
-      
+#-------------------------------------
+# PROMETHEUS
+#-------------------------------------     
   prometheus:
     image: prom/prometheus:latest
     depends_on:
@@ -94,7 +103,9 @@ services:
       - 9090:9090
     networks:
       - monitoring
-
+#-------------------------------------
+# VISUALIZE / CHART / GRAPHIC
+#-------------------------------------
   grafana:
     image: grafana/grafana:latest
     depends_on:
@@ -114,8 +125,9 @@ services:
       - /opt/cardano/cnode-docker-compose/grafana/grafana-variables.env
     networks:
       - monitoring
-      
-# === HTTP/HTTPS
+#-------------------------------------
+# PROXY :: HTTP/HTTPS
+#-------------------------------------
   proxy:
     image: nginx:latest
     container_name: proxy-nginx
