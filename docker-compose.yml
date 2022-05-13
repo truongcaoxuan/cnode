@@ -70,8 +70,6 @@ services:
       - '--storage.path=/home/data/'
     ports:
       - 9093:9093
-    links:
-      - telegrambot
     networks:
       - monitoring
       
@@ -94,9 +92,6 @@ services:
       - '--web.enable-lifecycle'
     ports:
       - 9090:9090
-    links:
-      - cadvisor
-      - alertmanager
     networks:
       - monitoring
 
@@ -115,9 +110,28 @@ services:
       - /opt/cardano/cnode-docker-compose/grafana/provisioning:/etc/grafana/provisioning
     ports:
       - 5000:3000
-    links:
-      - prometheus
     env_file:
       - /opt/cardano/cnode-docker-compose/grafana/grafana-variables.env
     networks:
       - monitoring
+      
+# === HTTP/HTTPS
+  proxy:
+    image: nginx:latest
+    container_name: proxy-nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - /opt/cardano/cnode-docker-compose/proxy/nginx/:/etc/nginx/conf.d/:ro
+#      - /opt/cardano/cnode-docker-compose/certbot/www:/var/www/certbot/:ro
+#      - /opt/cardano/cnode-docker-compose/certbot/conf/:/etc/nginx/ssl/:ro
+#  certbot:
+#    image: certbot/certbot:latest
+#    container_name: https-certbot
+#    restart: always
+#    volumes:
+#      - /opt/cardano/cnode-docker-compose/certbot/www/:/var/www/certbot/:rw
+#      - /opt/cardano/cnode-docker-compose/certbot/conf/:/etc/letsencrypt/:rw
