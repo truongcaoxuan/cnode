@@ -1,39 +1,40 @@
-# global configs
+# Global configs
 global:
   scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
   evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
   external_labels:
-        monitor: 'node-monitor'
+        monitor: 'node-monitoring'
   # scrape_timeout is set to the global default (10s).
 
+scrape_configs:
 #---------------------------------------------------------------------
 # https://crypto2099.io/adding-pool-stats-to-grafana-dashboard/
 # Crape data from adapools
-scrape_configs:
-  - job_name: 'poolstats' # To crape data form text collector source import adapools
-    scrape_interval: 15s
-    static_configs:
-      - targets: ['localhost:9100']
-        labels:
-          alias: 'adapools'
-          type:  'pool-stats'
+#  - job_name: 'poolstats' # To crape data form text collector source import adapools
+#    scrape_interval: 15s
+#    static_configs:
+#      - targets: ['localhost:9100']
+#        labels:
+#          alias: 'adapools'
+#          type:  'pool-stats'
+#
 #---------------------------------------------------------------------
 # https://github.com/input-output-hk/cardano-node/releases
 # Cnode configuration
   - job_name: 'cnode' # To scrape data from the running cardano-node
     scrape_interval: 15s
     static_configs:
-      - targets: ['cnode:12798']
+      - targets: ['cnode1.com:12798']
         labels:
-          alias: 'localhost'
+          alias: 'cnode1'
           type:  'pool'
-      - targets: ['relay.vnpip.com:12798']
+      - targets: ['cnode2.com:12798']
         labels:
-          alias: 'relay'
+          alias: 'cnode2'
           type:  'pool'
-      - targets: ['core-trada.vnpip.com:12798']
+      - targets: ['cnode3.com:12798']
         labels:
-          alias: 'core-trada'
+          alias: 'cnode3'
           type:  'pool'
 
 #---------------------------------------------------------------------
@@ -46,17 +47,17 @@ scrape_configs:
     metrics_path: /metrics
     scheme: http
     static_configs:
-      - targets: ['node-exporter:9091']
+      - targets: ['node1.com:9091']
         labels:
-          alias: 'localhost'
+          alias: 'node1'
           type:  'system'
-      - targets: ['relay.vnpip.com:9091']
+      - targets: ['node2.com:9091']
         labels:
-          alias: 'relay'
+          alias: 'node2'
           type:  'system'
-      - targets: ['core-trada.vnpip.com:9091']
+      - targets: ['node3.com:9091']
         labels:
-          alias: 'core-trada'
+          alias: 'node3'
           type:  'system'
 
 #---------------------------------------------------------------------
@@ -67,18 +68,31 @@ scrape_configs:
     metrics_path: /metrics
     
     static_configs:
-      - targets: ['hostname-winserver1:9182']
+      - targets: ['<ip-addr-sv1>:9182']
         labels:
-          alias: 'vps1'
+          alias: 'sv1'
           type:  'system'
-      - targets: ['hostname-winserver2:9182']
+      - targets: ['<ip-addr-sv2>:9182']
         labels:
-          alias: 'vps2'
+          alias: 'sv2'
           type:  'system'
-      - targets: ['hostname-winserver3:9182']
+      - targets: ['<ip-addr-sv3>:9182']
         labels:
-          alias: 'vps3'
+          alias: 'sv3'
           type:  'system'
+          
+
+#---------------------------------------------------------------------
+# https://github.com/google/cadvisor
+# cAdvisor configuration
+  - job_name: 'cadvisor' # To scrape data from cAdvisor to monitor the docker metrics.
+    scrape_interval: 15s
+
+    static_configs:
+      - targets: ['node1.com:8080']
+        labels:
+          alias: 'node1'
+          type:  'docker'
 #---------------------------------------------------------------------
 # https://github.com/prometheus/alertmanager/releases/
 # Alertmanager configuration
