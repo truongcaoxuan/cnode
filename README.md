@@ -22,14 +22,15 @@ cd cnode-docker-compose
 git clone https://github.com/inCaller/prometheus_bot.git
 
 ```
-### Modify targets
-/opt/cardano/cnode-docker-compose/prometheus/prometheus.yml
-### Modify chat_id
-/opt/cardano/cnode-docker-compose/alertmanager/alertmanager.yml
-### Modify telegram_token
-/opt/cardano/cnode-docker-compose/telegrambot/config.yaml
-### Modify domain
-/opt/cardano/cnode-docker-compose/proxy/nginx/nginx.conf
+## Modify Parameters
+#### Modify < targets >
+- */opt/cardano/cnode-docker-compose/prometheus/**prometheus.yml***
+#### Modify < chat_id >
+- */opt/cardano/cnode-docker-compose/alertmanager/**alertmanager.yml***
+#### Modify < telegram_token >
+- */opt/cardano/cnode-docker-compose/telegrambot/**config.yaml***
+#### Modify < domain/ip >
+- */opt/cardano/cnode-docker-compose/proxy/nginx/**nginx.conf***
 
 ## Run docker compose up monitoring
 Use .env config
