@@ -32,7 +32,7 @@ MAILTO=""
 30 0 * * 1   sudo apt autoremove
 #--: At 00:40 on Monday
 40 0 * * 1   sudo apt-get clean
-#--: At 00:50 on Monday
+#--: At 00:50 on Monday :: clear container logs
 50 0 * * 1   sudo sh -c "truncate -s 0 /var/lib/docker/containers/*/*-json.log"
 #
 #=== REBOOT ===# 
@@ -40,26 +40,26 @@ MAILTO=""
 #@reboot sleep 5 && sudo /opt/cardano/cnode/scripts/reboot_cli.sh
 #@reboot /opt/cardano/cnode/scripts/start_all.sh
 #--: Delete iptables on startup
-@reboot sleep 15 && sudo /usr/sbin/iptables -F
+# @reboot sleep 15 && sudo /usr/sbin/iptables -F
 #
 #=== DAILY === 
-#--:At 05:11 : clearlogs
-11 5 * * *   /opt/cardano/cnode/scripts/clearLogs.sh
+#--:At 05:11 : clearlogs cnode run with cntool
+# 11 5 * * *   /opt/cardano/cnode/scripts/clearLogs.sh
 #--:At 05:12 : clean caches
-22 5 * * * /opt/cardano/cnode/scripts/cleanCaches.sh
+# 22 5 * * * /opt/cardano/cnode/scripts/cleanCaches.sh
 #--:At 05:13 : Run poolstatsUpdater
-13 5 * * *   /opt/cardano/cnode/scripts/poolstatsUpdater.sh
+13 5 * * *   /opt/cardano/cnode-docker-compose/scripts/poolstatsUpdater.sh
 #
 #=== HOURLY ===
-#--:At minute 5: Run topologyUpdater
+#--:At minute 5: Run topologyUpdater cnode run cntool
 5 * * * *   /opt/cardano/cnode/scripts/topologyUpdater.sh
 #
 #=== EVERY FEW MINUTES ===
 #--:At every 55th minute :: check RAM High usage then reboot system
-*/55 * * * *  /opt/cardano/cnode/scripts/memory_alert.sh
+# */55 * * * *  /opt/cardano/cnode/scripts/memory_alert.sh
 #--:At every 20th minute :: DROP IP - PING ICMP RTT--- Peer IN CNODE
-*/20 * * * *  /opt/cardano/cnode/scripts/peerIN_check.sh
+# */20 * * * *  /opt/cardano/cnode/scripts/peerIN_check.sh
 #
 #=== EVERY FEW HOURS ===
 #--:Every 24th hour :At minute 10: Delete all iptable rule chain
-10 */24 * * * sudo /usr/sbin/iptables -F
+# 10 */24 * * * sudo /usr/sbin/iptables -F
