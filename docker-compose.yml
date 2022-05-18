@@ -47,6 +47,8 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
     ports:
       - 8080:8080
+    networks:
+      - monitoring
 #-------------------------------------
 # ALERT MANAGER / TELEGRAMBOT
 #-------------------------------------
@@ -69,12 +71,12 @@ services:
     container_name: alertmanager
     restart: always
     volumes:
-      - alertmanager_data:/home/data/
+      - alertmanager_data:/alertmanager
       - /opt/cardano/cnode-docker-compose/alertmanager/:/config/
     restart: always
     command:
       - '--config.file=/config/alertmanager.yml'
-      - '--storage.path=/home/data/'
+      - '--storage.path=/alertmanager'
     ports:
       - 9093:9093
     networks:
@@ -91,7 +93,7 @@ services:
     container_name: prometheus
     restart: always
     volumes:
-      - /opt/cardano/cnode-docker-compose/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - /opt/cardano/cnode-docker-compose/prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
@@ -140,6 +142,7 @@ services:
       - /opt/cardano/cnode-docker-compose/proxy/nginx/:/etc/nginx/conf.d/:ro
 #      - /opt/cardano/cnode-docker-compose/certbot/www:/var/www/certbot/:ro
 #      - /opt/cardano/cnode-docker-compose/certbot/conf/:/etc/nginx/ssl/:ro
+
 #  certbot:
 #    image: certbot/certbot:latest
 #    container_name: https-certbot
