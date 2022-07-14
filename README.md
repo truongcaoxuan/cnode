@@ -19,7 +19,8 @@ mkdir /opt/cardano/
 cd /opt/cardano/
 git clone https://github.com/truongcaoxuan/cnode-docker-compose.git
 cd cnode-docker-compose
-git clone https://github.com/inCaller/prometheus_bot.git
+git clone https://github.com/truongcaoxuan/prometheus_bot.git
+# fork from https://github.com/inCaller/prometheus_bot.git
 
 ```
 ## Modify Parameters
