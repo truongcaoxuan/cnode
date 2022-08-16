@@ -150,6 +150,7 @@ runBlockProducerNode () {
   echo "run Block Producer Node"
   echo "cardano-node run +RTS -N -RTS ${effopts[@]}"
   exec /usr/local/bin/cardano-node run +RTS -N -RTS ${effopts[@]}
+ #exec /usr/local/bin/cardano-node run +RTS -N -T -I0 -A16m --disable-delayed-os-memory-return --nonmoving-gc -RTS ${effopts[@]}
 }
 
 # Shift the first option by one index
